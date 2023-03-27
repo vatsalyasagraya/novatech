@@ -4,10 +4,6 @@ import FlowChart from "./components/FlowChart";
 function App() {
   return (
     <div>
-
-
-
-      
       <FlowChart/>
     </div>
   );
