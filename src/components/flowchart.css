@@ -1,8 +1,8 @@
 .flowchart{
-    margin: 2rem 4rem;
+    margin: 3rem;
     display: flex;
     position: relative;
-    padding: 0 5rem;
+    justify-content: center;
 }
 .grid{
     display: grid;
@@ -20,7 +20,8 @@
     visibility: hidden;
 }
 
-.buttons button{
-    /* background-color: #0eb5b5; */
-    margin: 1rem;
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
