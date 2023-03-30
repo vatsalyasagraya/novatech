@@ -13,9 +13,17 @@ function FlowChart() {
 
     function handleClick(){
         let command=a.split(" ")[0];
-        let num=Number(a.split(" ")[1]);    
-        console.log(num);
-        refA.current.value=num;
+        switch (command) {
+            case "MVI":
+                let num=Number(a.split(" ")[1]);    
+                console.log(num);
+                refA.current.value=num;
+                break;
+            default:
+                refA.current.value="Incorrect Command";
+                break;
+        }
+        
     }
 
     return(
