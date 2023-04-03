@@ -16,6 +16,8 @@ function FlowChart() {
         let commands = a.split("\n");
         for(let i=0;i<commands.length;i++)
         {
+        const decimalA = parseInt(refA.current.value, 2);
+        const decimalB = parseInt(refB.current.value, 2);
         let command=a.split("\n")[i].split(" ")[0];
         switch (command) 
         {
@@ -35,30 +37,11 @@ function FlowChart() {
                 }         
                 break;
             case "ADD":
-                const decimalA = parseInt(refA.current.value, 2);
-                const decimalB = parseInt(refB.current.value, 2);
                 const decimalSum = decimalA + decimalB;
                 refA.current.value = decimalSum.toString(2);
                 break;
             case "AND":
-                const binaryA = refA.current.value;
-                const binaryB = refB.current.value;
-                let result = "";
-                let k = binaryA.length - 1;
-                let j = binaryB.length - 1;
-                while (i >= 0 && j >= 0) {
-                    if (binaryA[k] === "1" && binaryB[j] === "1") 
-                    {
-                        result = "1" + result;
-                    }
-                    else 
-                    {
-                        result = "0" + result;
-                    }
-                    k--;
-                    j--;
-                }
-                refA.current.value = result;
+                refA.current.value=(decimalA&decimalB).toString(2);
                 break;
             default:
                 refA.current.value="Incorrect Command";
