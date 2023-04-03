@@ -7,23 +7,55 @@ import "./flowchart.css"
 function FlowChart() {
     const refA=useRef("null");
     const refB=useRef("null");
-    
+    const refRAM=useRef("null");
+
     const [a, setA] = useState("");
     const [b, setB] = useState("");
 
     function handleClick(){
-        let command=a.split(" ")[0];
-        switch (command) {
+        let commands = a.split("\n");
+        for(let i=0;i<commands.length;i++)
+        {
+        const decimalA = parseInt(refA.current.value, 2);
+        const decimalB = parseInt(refB.current.value, 2);
+        let command=a.split("\n")[i].split(" ")[0];
+        switch (command) 
+        {
             case "MVI":
-                let num=Number(a.split(" ")[1]);    
+                let num=Number(a.split("\n")[i].split(" ")[1]);    
                 console.log(num);
                 refA.current.value=num;
+                break;
+            case "MOV":
+                if(a.split("\n")[i].split(" ")[1]=="B,A")
+                {
+                    refB.current.value=refA.current.value;
+                }
+                else if(a.split("\n")[i].split(" ")[1]=="A,B")
+                {
+                    refA.current.value=refB.current.value;   
+                }         
+                break;
+            case "ADD":
+                const decimalSum = decimalA + decimalB;
+                refA.current.value = decimalSum.toString(2);
+                break;
+            case "AND":
+                refA.current.value=(decimalA&decimalB).toString(2);
                 break;
             default:
                 refA.current.value="Incorrect Command";
                 break;
         }
-        
+        }
+
+        refRAM.current.value="";
+        refRAM.current.focus();
+    }
+    function reset(){
+        refA.current.value="";
+        refB.current.value="";
+        refRAM.current.value="";
     }
 
     return(
@@ -34,7 +66,7 @@ function FlowChart() {
                 <svg width="150" height="50"><line x1="75" y1="0" x2="75" y2="100" stroke="black"/></svg>
                 <TextField id="outlined-basic" multiline rows={3}label="MAR" variant="filled" className='mar' style = {{width: 150}}/>
                 <svg width="150" height="50"><line x1="75" y1="0" x2="75" y2="100" stroke="black"/></svg>
-                <TextField id="outlined-basic" multiline rows={3}label="RAM" variant="filled" className='ram' style = {{width: 150}} onChange={(e) => {setA(e.target.value);}} />
+                <TextField id="outlined-basic" multiline rows={3}label="RAM" variant="filled" inputRef={refRAM} className='ram' style = {{width: 150}} onChange={(e) => {setA(e.target.value);}} />
             </div>
             <div className='grid'>
                 <svg width="50" height="400">
@@ -87,7 +119,7 @@ function FlowChart() {
         <div className="buttons">
         <Button variant="contained" onClick={handleClick}>Execute</Button>
         <Button variant="contained">Next</Button>
-        <Button variant="contained">Reset</Button>
+        <Button variant="contained" onClick={reset}>Reset</Button>
         </div>
     </>
     )
