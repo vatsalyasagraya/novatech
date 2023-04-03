@@ -42,7 +42,7 @@ function FlowChart() {
         }
 
         refRAM.current.value="";
-        
+        refRAM.current.focus();
     }
 
     return(
