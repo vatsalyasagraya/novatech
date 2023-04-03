@@ -36,6 +36,26 @@ function FlowChart() {
                 const decimalSum = decimalA + decimalB;
                 refA.current.value = decimalSum.toString(2);
                 break;
+            case "AND":
+                const binaryA = refA.current.value;
+                const binaryB = refB.current.value;
+                let result = "";
+                let i = binaryA.length - 1;
+                let j = binaryB.length - 1;
+                while (i >= 0 && j >= 0) {
+                    if (binaryA[i] === "1" && binaryB[j] === "1") 
+                    {
+                        result = "1" + result;
+                    }
+                    else 
+                    {
+                        result = "0" + result;
+                    }
+                    i--;
+                    j--;
+                }
+                refA.current.value = result;
+                break;
             default:
                 refA.current.value="Incorrect Command";
                 break;
@@ -43,6 +63,11 @@ function FlowChart() {
 
         refRAM.current.value="";
         refRAM.current.focus();
+    }
+    function reset(){
+        refA.current.value="";
+        refB.current.value="";
+        refRAM.current.value="";
     }
 
     return(
@@ -106,7 +131,7 @@ function FlowChart() {
         <div className="buttons">
         <Button variant="contained" onClick={handleClick}>Execute</Button>
         <Button variant="contained">Next</Button>
-        <Button variant="contained">Reset</Button>
+        <Button variant="contained" onClick={reset}>Reset</Button>
         </div>
     </>
     )
