@@ -13,19 +13,23 @@ function FlowChart() {
     const [b, setB] = useState("");
 
     function handleClick(){
-        let command=a.split(" ")[0];
-        switch (command) {
+        let commands = a.split("\n");
+        for(let i=0;i<commands.length;i++)
+        {
+        let command=a.split("\n")[i].split(" ")[0];
+        switch (command) 
+        {
             case "MVI":
-                let num=Number(a.split(" ")[1]);    
+                let num=Number(a.split("\n")[i].split(" ")[1]);    
                 console.log(num);
                 refA.current.value=num;
                 break;
             case "MOV":
-                if(a.split(" ")[1]=="B,A")
+                if(a.split("\n")[i].split(" ")[1]=="B,A")
                 {
                     refB.current.value=refA.current.value;
                 }
-                else if(a.split(" ")[1]=="A,B")
+                else if(a.split("\n")[i].split(" ")[1]=="A,B")
                 {
                     refA.current.value=refB.current.value;   
                 }         
@@ -40,10 +44,10 @@ function FlowChart() {
                 const binaryA = refA.current.value;
                 const binaryB = refB.current.value;
                 let result = "";
-                let i = binaryA.length - 1;
+                let k = binaryA.length - 1;
                 let j = binaryB.length - 1;
                 while (i >= 0 && j >= 0) {
-                    if (binaryA[i] === "1" && binaryB[j] === "1") 
+                    if (binaryA[k] === "1" && binaryB[j] === "1") 
                     {
                         result = "1" + result;
                     }
@@ -51,7 +55,7 @@ function FlowChart() {
                     {
                         result = "0" + result;
                     }
-                    i--;
+                    k--;
                     j--;
                 }
                 refA.current.value = result;
@@ -59,6 +63,7 @@ function FlowChart() {
             default:
                 refA.current.value="Incorrect Command";
                 break;
+        }
         }
 
         refRAM.current.value="";
