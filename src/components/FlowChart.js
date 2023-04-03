@@ -7,7 +7,8 @@ import "./flowchart.css"
 function FlowChart() {
     const refA=useRef("null");
     const refB=useRef("null");
-    
+    const refRAM=useRef("null");
+
     const [a, setA] = useState("");
     const [b, setB] = useState("");
 
@@ -19,10 +20,28 @@ function FlowChart() {
                 console.log(num);
                 refA.current.value=num;
                 break;
+            case "MOV":
+                if(a.split(" ")[1]=="B,A")
+                {
+                    refB.current.value=refA.current.value;
+                }
+                else if(a.split(" ")[1]=="A,B")
+                {
+                    refA.current.value=refB.current.value;   
+                }         
+                break;
+            case "ADD":
+                const decimalA = parseInt(refA.current.value, 2);
+                const decimalB = parseInt(refB.current.value, 2);
+                const decimalSum = decimalA + decimalB;
+                refA.current.value = decimalSum.toString(2);
+                break;
             default:
                 refA.current.value="Incorrect Command";
                 break;
         }
+
+        refRAM.current.value="";
         
     }
 
@@ -34,7 +53,7 @@ function FlowChart() {
                 <svg width="150" height="50"><line x1="75" y1="0" x2="75" y2="100" stroke="black"/></svg>
                 <TextField id="outlined-basic" multiline rows={3}label="MAR" variant="filled" className='mar' style = {{width: 150}}/>
                 <svg width="150" height="50"><line x1="75" y1="0" x2="75" y2="100" stroke="black"/></svg>
-                <TextField id="outlined-basic" multiline rows={3}label="RAM" variant="filled" className='ram' style = {{width: 150}} onChange={(e) => {setA(e.target.value);}} />
+                <TextField id="outlined-basic" multiline rows={3}label="RAM" variant="filled" inputRef={refRAM} className='ram' style = {{width: 150}} onChange={(e) => {setA(e.target.value);}} />
             </div>
             <div className='grid'>
                 <svg width="50" height="400">
