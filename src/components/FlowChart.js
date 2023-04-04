@@ -7,8 +7,9 @@ import "./flowchart.css"
 function FlowChart() {
     const refA=useRef("null");
     const refB=useRef("null");
+    const refIr=useRef("null");
     const refRAM=useRef("null");
-
+    
     const [a, setA] = useState("");
     const [b, setB] = useState("");
 
@@ -19,12 +20,13 @@ function FlowChart() {
         const decimalA = parseInt(refA.current.value, 2);
         const decimalB = parseInt(refB.current.value, 2);
         let command=a.split("\n")[i].split(" ")[0];
+        refIr.current.value=command;
         switch (command) 
         {
             case "MVI":
                 let num=Number(a.split("\n")[i].split(" ")[1]);    
-                console.log(num);
                 refA.current.value=num;
+                
                 break;
             case "MOV":
                 if(a.split("\n")[i].split(" ")[1]=="B,A")
@@ -111,7 +113,7 @@ function FlowChart() {
             <div className='grid'>
                 <div className='alu'>ALU</div>
                 <svg width="200" height="50"></svg>
-                <TextField id="outlined-basic" multiline rows={2}label="IR" variant="filled" className='ir' style = {{width: 150}}/>
+                <TextField id="outlined-read-only-input" multiline rows={2}label="IR" variant="filled" className='ir' inputRef={refIr} style = {{width: 150}} InputProps={{readOnly: true,}} defaultValue="0"/>
                 <svg width="200" height="70"><line x1="75" y1="0" x2="75" y2="100" stroke="black"/></svg>
                 <TextField id="outlined-basic" multiline rows={3}label="ROM" variant="filled" className='rom' style = {{width: 150}}/>
             </div>

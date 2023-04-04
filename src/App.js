@@ -1,5 +1,5 @@
 import React from "react";
-import FlowChart from "./components/FlowChart";
+import FlowChart from "./components/FlowChart.js";
 function App() {
   return (
     <div>
