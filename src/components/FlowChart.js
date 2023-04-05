@@ -89,7 +89,7 @@ function FlowChart() {
                 refRAM.current.style.color = 'black';
                 refA.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
                 refA.current.style.color = 'white';
-                let num=Number(a.split("\n")[i].split(" ")[1]);    
+                let num=a.split("\n")[i].split(" ")[1];    
                 refA.current.value=num;
                 refPC.current.style.backgroundColor = 'transparent';
                 refPC.current.style.color = 'black';
@@ -129,6 +129,9 @@ function FlowChart() {
                 refA.current.value="Incorrect Command";
                 break;
         }
+        refROM.current.value="";
+        refPC.current.value="0";
+        refMAR.current.value="0";
         }
 
         refRAM.current.value="";
