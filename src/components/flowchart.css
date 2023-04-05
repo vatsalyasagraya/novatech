@@ -17,6 +17,12 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
 }
+.pc-green {
+    color: rgba(0, 128, 0, 0.568);
+  }
+.mar-green {
+    color: rgba(49, 202, 49, 0.58);
+  }
 .invisible{
     visibility: hidden;
 }
