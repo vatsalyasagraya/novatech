@@ -1,8 +1,10 @@
 import React from "react";
 import FlowChart from "./components/FlowChart.js";
+import Navbar from "./components/Navbar.js";
 function App() {
   return (
     <div>
+      <Navbar/>
       <FlowChart/>
     </div>
   );
