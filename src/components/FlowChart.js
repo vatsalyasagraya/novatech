@@ -24,7 +24,6 @@ function FlowChart() {
 
         const decimalA = parseInt(refA.current.value, 2);
         const decimalB = parseInt(refB.current.value, 2);
-        //const dPC= parseInt(refPC.current.value, 2);
         let command=a.split(" ")[0];
         
         switch (command) 
