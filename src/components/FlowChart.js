@@ -21,13 +21,11 @@ function FlowChart() {
     }
       
     async function handleClick(){
-        let commands = a.split("\n");
-        for(let i=0;i<commands.length;i++)
-        {
+
         const decimalA = parseInt(refA.current.value, 2);
         const decimalB = parseInt(refB.current.value, 2);
         //const dPC= parseInt(refPC.current.value, 2);
-        let command=a.split("\n")[i].split(" ")[0];
+        let command=a.split(" ")[0];
         
         switch (command) 
         {
@@ -89,7 +87,7 @@ function FlowChart() {
                 refRAM.current.style.color = 'black';
                 refA.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
                 refA.current.style.color = 'white';
-                let num=a.split("\n")[i].split(" ")[1];    
+                let num=a.split(" ")[1];    
                 refA.current.value=num;
                 refPC.current.style.backgroundColor = 'transparent';
                 refPC.current.style.color = 'black';
@@ -128,12 +126,10 @@ function FlowChart() {
             default:
                 refA.current.value="Incorrect Command";
                 break;
-        }
+            }
         refROM.current.value="";
         refPC.current.value="0";
         refMAR.current.value="0";
-        }
-
         refRAM.current.value="";
         refRAM.current.focus();
     }
