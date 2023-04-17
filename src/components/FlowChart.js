@@ -107,11 +107,11 @@ function FlowChart() {
                 //////////////////////////////////////////////
                 break;
             case "MOV":
-                if(a.split("\n")[i].split(" ")[1]=="B,A")
+                if(a.split(" ")[1]=="B,A")
                 {
                     refB.current.value=refA.current.value;
                 }
-                else if(a.split("\n")[i].split(" ")[1]=="A,B")
+                else if(a.split(" ")[1]=="A,B")
                 {
                     refA.current.value=refB.current.value;   
                 }         
