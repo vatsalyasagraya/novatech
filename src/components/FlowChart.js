@@ -24,7 +24,6 @@ function FlowChart() {
 
         const decimalA = parseInt(refA.current.value, 2);
         const decimalB = parseInt(refB.current.value, 2);
-        //const dPC= parseInt(refPC.current.value, 2);
         let command=a.split(" ")[0];
         
         switch (command) 
@@ -107,11 +106,11 @@ function FlowChart() {
                 //////////////////////////////////////////////
                 break;
             case "MOV":
-                if(a.split("\n")[i].split(" ")[1]=="B,A")
+                if(a.split(" ")[1]=="B,A")
                 {
                     refB.current.value=refA.current.value;
                 }
-                else if(a.split("\n")[i].split(" ")[1]=="A,B")
+                else if(a.split(" ")[1]=="A,B")
                 {
                     refA.current.value=refB.current.value;   
                 }         
