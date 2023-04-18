@@ -73,8 +73,7 @@ function FlowChart() {
         
         switch (command) 
         {
-            case "MVI":
-
+            case "MVI"://DONE
                 t1_t2_t3("MVI");
                 await delay(3500);
                 ///////////////////////////////////////////
@@ -102,7 +101,7 @@ function FlowChart() {
                 await delay(500);
                 //////////////////////////////////////////////
                 break;
-            case "MOV":
+            case "MOV"://DONE
                 t1_t2_t3("MOV");
                 await delay(3500);
                 refROM.current.value+="T3: PC(I), A(E), B(L)\n";
@@ -128,7 +127,7 @@ function FlowChart() {
             case "ADD":
                 t1_t2_t3("ADD");
                 await delay(3500);
-
+                
                 const decimalSum = decimalA + decimalB;
                 refA.current.value = decimalSum.toString(2);
                 break;
