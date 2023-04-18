@@ -15,6 +15,15 @@ function FlowChart() {
 
     const [a, setA] = useState("");
     const [b, setB] = useState("");
+    
+    function colorGreen(ref) {
+        ref.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
+        ref.current.style.color = 'white';
+    }
+    function colorWhite(ref){
+        ref.current.style.backgroundColor = 'transparent';
+        ref.current.style.color = 'black';
+    }
 
     function colorGreen(ref) 
     {
@@ -31,8 +40,7 @@ function FlowChart() {
     {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    async function t1_t2_t3(name)
-    {
+    async function t1_t2_t3(name){
         refROM.current.value="T0: PC(E), MAR(E,L)\n";
                 colorGreen(refPC);
                 await delay(500);
@@ -103,8 +111,6 @@ function FlowChart() {
                 //////////////////////////////////////////////
                 break;
             case "MOV":
-                t1_t2_t3("MVI");
-                await delay(3500);
                 if(a.split(" ")[1]=="B,A")
                 {
                     refB.current.value=refA.current.value;
@@ -127,7 +133,7 @@ function FlowChart() {
             }
         refROM.current.value="";
         // refPC.current.value="0";
-        // refMAR.current.value="";
+        refMAR.current.value="";
         refRAM.current.value="";
         refRAM.current.focus();
     }
