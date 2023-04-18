@@ -15,6 +15,15 @@ function FlowChart() {
 
     const [a, setA] = useState("");
     const [b, setB] = useState("");
+    
+    function colorGreen(ref) {
+        ref.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
+        ref.current.style.color = 'white';
+    }
+    function colorWhite(ref){
+        ref.current.style.backgroundColor = 'transparent';
+        ref.current.style.color = 'black';
+    }
 
     function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -31,78 +40,58 @@ function FlowChart() {
             case "MVI":
                 /////////////////////////////////////////////////
                 refROM.current.value="T0: PC(E), MAR(E,L)\n";
-                refPC.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refPC.current.style.color = 'white';
+                colorGreen(refPC);
                 await delay(2000);
-                refPC.current.style.backgroundColor = 'transparent';
-                refPC.current.style.color = 'black';
-                refMAR.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refMAR.current.style.color = 'white';
+                colorWhite(refPC);
+                colorGreen(refMAR);
                 refMAR.current.value=parseInt(refPC.current.value);
-                await delay(1700);
-                refMAR.current.style.backgroundColor = 'transparent';
-                refMAR.current.style.color = 'black';
-                //////////////////////////////////////////////////
+                await delay(2000);
+                colorWhite(refMAR);
+                /////////////////////////////////////////////////
                 refROM.current.value+="T1: PC(I), RAM(E), IR(L)\n";
-                refPC.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refPC.current.style.color = 'white';
+                colorGreen(refPC);
                 refPC.current.value=parseInt(refPC.current.value)+1;
-                refRAM.current.style.backgroundColor='rgba(0, 128, 0, 0.568)';
-                refRAM.current.style.color='white';
-                await delay(1500);
-                refRAM.current.style.backgroundColor = 'transparent';
-                refRAM.current.style.color = 'black';
-                refIr.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refIr.current.style.color = 'white';
+                colorGreen(refRAM);
+                await delay(2000);
+                colorWhite(refRAM);
+                colorGreen(refIr)
                 refIr.current.value="MVI";
-                refPC.current.style.backgroundColor = 'transparent';
-                refPC.current.style.color = 'black';
+                colorWhite(refPC)
                 refMAR.current.value=parseInt(refPC.current.value);
-                await delay(1700);
-                refIr.current.style.backgroundColor = 'transparent';
-                refIr.current.style.color = 'black';
+                await delay(2000);
+                colorWhite(refIr);
                 //////////////////////////////////////////////////
                 refROM.current.value+="T2:PC(E), MAR(E,L)\n";
-                refPC.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refPC.current.style.color = 'white';
-                await delay(1500);
-                refPC.current.style.backgroundColor = 'transparent';
-                refPC.current.style.color = 'black';
-                refMAR.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refMAR.current.style.color = 'white';
+                colorGreen(refPC)
+                await delay(2000);
+                colorWhite(refPC)
+                colorGreen(refMAR);
                 refMAR.current.value=parseInt(refPC.current.value);
                 await delay(1700);
-                refMAR.current.style.backgroundColor = 'transparent';
-                refMAR.current.style.color = 'black';
+                colorWhite(refMAR);
                 ///////////////////////////////////////////
                 refROM.current.value+="T3: PC(I), RAM(E), A(L)\n";
-                refPC.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refPC.current.style.color = 'white';
+                colorGreen(refPC);
                 refPC.current.value=parseInt(refPC.current.value)+1;
-                refRAM.current.style.backgroundColor='rgba(0, 128, 0, 0.568)';
-                refRAM.current.style.color='white';
-                await delay(1500);
-                refRAM.current.style.backgroundColor = 'transparent';
-                refRAM.current.style.color = 'black';
-                refA.current.style.backgroundColor = 'rgba(0, 128, 0, 0.568)';
-                refA.current.style.color = 'white';
+                colorGreen(refRAM)
+                await delay(2000);
+                colorWhite(refRAM);
+                colorGreen(refA);
                 let num=a.split(" ")[1];    
                 refA.current.value=num;
-                refPC.current.style.backgroundColor = 'transparent';
-                refPC.current.style.color = 'black';
+                colorWhite(refPC);
                 refMAR.current.value=parseInt(refPC.current.value);
-                await delay(1700);
-                refA.current.style.backgroundColor = 'transparent';
-                refA.current.style.color = 'black';
+                await delay(2000);
+                colorWhite(refA)
                 ////////////////////////////////////////////
                 refROM.current.value+="T4:\n";
-                await delay(1100);
+                await delay(2000);
                 ///////////////////////////////////////////
                 refROM.current.value+="T5:\n";
-                await delay(1100);
+                await delay(2000);
                 ////////////////////////////////////////////
                 refROM.current.value+="T6: \n";
-                await delay(1100);
+                await delay(2000);
                 //////////////////////////////////////////////
                 break;
             case "MOV":
@@ -126,11 +115,11 @@ function FlowChart() {
                 refA.current.value="Incorrect Command";
                 break;
             }
-        refROM.current.value="";
-        refPC.current.value="0";
-        refMAR.current.value="0";
-        refRAM.current.value="";
-        refRAM.current.focus();
+        // refROM.current.value="";
+        // refPC.current.value="0";
+        // refMAR.current.value="0";
+        // refRAM.current.value="";
+        // refRAM.current.focus();
     }
     function reset(){
         refA.current.value="";
