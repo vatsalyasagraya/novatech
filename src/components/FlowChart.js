@@ -74,7 +74,7 @@ function FlowChart() {
         switch (command) 
         {
             case "MVI":
-                /////////////////////////////////////////////////
+
                 t1_t2_t3("MVI");
                 await delay(3500);
                 ///////////////////////////////////////////
@@ -82,29 +82,36 @@ function FlowChart() {
                 colorGreen(refPC);
                 refPC.current.value=parseInt(refPC.current.value)+1;
                 colorGreen(refRAM)
-                await delay(2000);
+                await delay(500);
                 colorWhite(refRAM);
                 colorGreen(refA);
                 let num=a.split(" ")[1];    
                 refA.current.value=num;
                 colorWhite(refPC);
                 refMAR.current.value=parseInt(refPC.current.value);
-                await delay(2000);
+                await delay(500);
                 colorWhite(refA)
                 ////////////////////////////////////////////
                 refROM.current.value+="T4:\n";
-                await delay(2000);
+                await delay(500);
                 ///////////////////////////////////////////
                 refROM.current.value+="T5:\n";
-                await delay(2000);
+                await delay(500);
                 ////////////////////////////////////////////
                 refROM.current.value+="T6: \n";
-                await delay(2000);
+                await delay(500);
                 //////////////////////////////////////////////
                 break;
             case "MOV":
-                t1_t2_t3("MVI");
+                t1_t2_t3("MOV");
                 await delay(3500);
+                refROM.current.value+="T3: PC(I), A(E), B(L)\n";
+                colorGreen(refPC);
+                refPC.current.value=parseInt(refPC.current.value)+1;
+                colorGreen(refA);
+                await delay(500);
+                colorWhite(refA);
+                colorGreen(refB);
                 if(a.split(" ")[1]=="B,A")
                 {
                     refB.current.value=refA.current.value;
@@ -112,13 +119,22 @@ function FlowChart() {
                 else if(a.split(" ")[1]=="A,B")
                 {
                     refA.current.value=refB.current.value;   
-                }         
+                } 
+                colorWhite(refPC);
+                refMAR.current.value=parseInt(refPC.current.value);
+                await delay(500);
+                colorWhite(refB);      
                 break;
             case "ADD":
+                t1_t2_t3("ADD");
+                await delay(3500);
+
                 const decimalSum = decimalA + decimalB;
                 refA.current.value = decimalSum.toString(2);
                 break;
             case "AND":
+                t1_t2_t3("AND");
+                await delay(3500);
                 refA.current.value=(decimalA&decimalB).toString(2);
                 break;
             default:
