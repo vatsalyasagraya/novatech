@@ -8,7 +8,22 @@ body {
   text-align: center;
   align-items: center;
 }
-
+.photo{
+   /* background-image: url('../public/BG.jpg'); */
+  background-size: cover; 
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* opacity: 0.6; */
+  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.722),rgba(0, 0, 0, 0.119)), url('../public/BG3.jpg');
+}
+svg{
+  stroke: #fff;
+  fill: #fff;
+}
+.box{
+  background-color: #fff;
+  border-radius: 8px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

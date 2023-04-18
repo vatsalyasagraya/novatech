@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 function Navbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }} >
+    <AppBar position="static" style={{backgroundColor: '#408E91'}}>
       <Toolbar>
         <IconButton
           size="large"

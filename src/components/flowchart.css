@@ -31,4 +31,8 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    
+}
+.but{
+    background-color: #408E91;
 }
