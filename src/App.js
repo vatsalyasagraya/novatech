@@ -3,7 +3,8 @@ import FlowChart from "./components/FlowChart.js";
 import Navbar from "./components/Navbar.js";
 function App() {
   return (
-    <div>
+    <div className="photo">
+
       <Navbar/>
       <FlowChart/>
     </div>
