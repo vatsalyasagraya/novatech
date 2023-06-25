@@ -8,13 +8,14 @@ body {
   text-align: center;
   align-items: center;
 }
-.photo{
+body{
    /* background-image: url('../public/BG.jpg'); */
   background-size: cover; 
   background-repeat: no-repeat;
   height: 100vh;
   /* opacity: 0.6; */
   background-image: linear-gradient(to right,rgba(0, 0, 0, 0.722),rgba(0, 0, 0, 0.119)), url('../public/BG3.jpg');
+  background-size:contain;
 }
 svg{
   stroke: #fff;

@@ -35,6 +35,7 @@ function FlowChart() {
         ref.current.style.backgroundColor = 'transparent';
         ref.current.style.color = 'black';
     }
+    console.log(refPC);
 
     function delay(ms) 
     {
@@ -209,9 +210,9 @@ function FlowChart() {
                 </div>
             </div>
             <div className="buttons">
-                <Button variant="contained" className="but" onClick={handleClick}>Execute</Button>
-                <Button variant="contained" className="but" >Next</Button>
-                <Button variant="contained" className="but" onClick={reset}>Reset</Button>
+                <Button variant="contained" className="but" onClick={handleClick} style={{backgroundColor:"#408E91"}}>Execute</Button>
+                <Button variant="contained" className="but" style={{backgroundColor:"#408E91"}} >Next</Button>
+                <Button variant="contained" className="but" onClick={reset}style={{backgroundColor:"#408E91"}}> Reset</Button>
             </div>
         </>
     )
